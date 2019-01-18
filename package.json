@@ -1,0 +1,47 @@
+{
+  "name": "trooba-memcached-transport",
+  "version": "0.1.0",
+  "description": "memcached transport for trooba pipeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive test",
+    "test-coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/**/*.js",
+    "lint": "eslint --quiet -c .eslintrc index.js lib/*.js",
+    "lint-fix": "eslint --fix index.js lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trooba/trooba-memcached-transport.git"
+  },
+  "keywords": [
+    "memcached",
+    "trooba",
+    "transport",
+    "service"
+  ],
+  "author": "Gopinath Munisifreddy<gmunisifreddy@ebay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trooba/trooba-memcached-transport/issues"
+  },
+  "homepage": "https://github.com/trooba/trooba-memcached-transport#readme",
+  "devDependencies": {
+    "app-root-path": "^2.1.0",
+    "async": "^2.5.0",
+    "eslint": "^5.10.0",
+    "eslint-config-ebay": "^1.0.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "istanbul": "^0.4.5",
+    "jslint": "^0.12.0",
+    "mocha": "^3.1.2",
+    "nock": "^9.0.2",
+    "sinon": "^7.2.2",
+    "trooba": "^2"
+  },
+  "dependencies": {
+    "memcached": "^2.2.2"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  }
+}

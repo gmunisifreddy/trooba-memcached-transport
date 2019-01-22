@@ -1,7 +1,7 @@
 # trooba-memcached-transport
 [![codecov](https://codecov.io/gh/trooba/trooba-memcached-transport/branch/master/graph/badge.svg)](https://codecov.io/gh/trooba/trooba-memcached-transport)
-[![Build Status](https://travis-ci.org/trooba/trooba-memcached-transport.svg?branch=master)](https://travis-ci.org/trooba/trooba-memcached-transport) [![NPM](https://img.shields.io/npm/v/trooba.svg)](https://www.npmjs.com/package/trooba)
-[![Downloads](https://img.shields.io/npm/dm/trooba.svg)](http://npm-stat.com/charts.html?package=trooba)
+[![Build Status](https://travis-ci.org/trooba/trooba-memcached-transport.svg?branch=master)](https://travis-ci.org/trooba/trooba-memcached-transport) [![NPM](https://img.shields.io/npm/v/trooba-memcached-transport.svg)](https://www.npmjs.com/package/trooba-memcached-transport)
+[![Downloads](https://img.shields.io/npm/dm/trooba.svg)](http://npm-stat.com/charts.html?package=trooba-memcached-transport)
 [![Known Vulnerabilities](https://snyk.io/test/github/trooba/trooba-memcached-transport/badge.svg)](https://snyk.io/test/github/trooba/trooba-memcached-transport)
 
 A [Memcached](https://github.com/3rd-Eden/memcached) transport for trooba pipeline. All APIs of [Memcached](https://github.com/3rd-Eden/memcached) are supported in this transport.

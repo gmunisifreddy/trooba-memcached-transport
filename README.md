@@ -44,7 +44,7 @@ console.log(retrievedValue);
 ## Setting up memcached client
 You can setup memcached client by configuring three properties `clientId`, `servers` and `options`. 
 * `clientid` - an unique identifier associated with memcached client.
-* `servers` - location of memcached servers. Please refer to the [documentation here](https://www.npmjs.com/package/memcached#server-locations) on various ways to configure server locations
+* `servers` - location of memcached servers. Please refer to the [documentation here](https://www.npmjs.com/package/memcached#server-locations) on various ways to configure server locations.
 * `options` - various options to configure the connection. Please refere to the [documentation here](https://www.npmjs.com/package/memcached#options) for various options to configure.
 
 ```js

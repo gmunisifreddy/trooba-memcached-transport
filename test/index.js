@@ -6,6 +6,35 @@ const sinon = require('sinon');
 const memcacheTransport = require('..');
 
 describe(__filename, () => {
+    it('should create a separate connection for new client instance', async () => {
+        const memcacheMock1 = {
+            append: sinon.stub().yields(null, true)
+        };
+        const memcacheMock2 = {
+            append: sinon.stub().yields(null, true)
+        };
+        const client1 = getTroobaClient({
+            connection: memcacheMock1
+        });
+        const client2 = getTroobaClient({
+            connection: memcacheMock2
+        });
+        Assert.deepEqual(client1.connection, client2.connection);
+    });
+    it('should re-use connection stored in client instance', async () => {
+        const append = sinon.stub().yields(null, true)
+        const memcacheMock = {
+            append
+        };
+        const memcachedConfigs = {
+            connection: memcacheMock
+        };
+        const client = getTroobaClient(memcachedConfigs);
+        await client.append('test-key1', 'some-data1');
+        await client.append('test-key1', 'some-data2');
+        Assert.ok(2, append.calledTwice);
+        
+    });
     it('verify touch method', async () => {
         const memcacheMock = {
             touch: sinon.stub().yields(null, true)
@@ -257,40 +286,40 @@ describe(__filename, () => {
         assertCalledOnceWithNoArgs(memcacheMock.end);
     });    
     
-    function assertCalledOnceWithNoArgs(stub){
+    function assertCalledOnceWithNoArgs(stub) {
         Assert.equal(stub.calledOnce, true);        
         Assert.equal(stub.getCall(0).args.length, 1);
-        Assert.equal(typeof(stub.getCall(0).args[0]), "function");
+        Assert.equal(typeof(stub.getCall(0).args[0]), 'function');
     }
-    function assertCalledOnceWithOneArg(stub, arg1){
+    function assertCalledOnceWithOneArg(stub, arg1) {
         Assert.equal(stub.calledOnce, true);        
         Assert.equal(stub.getCall(0).args.length, 2);
         Assert.deepEqual(stub.getCall(0).args[0], arg1);                
-        Assert.equal(typeof(stub.getCall(0).args[1]), "function");        
+        Assert.equal(typeof(stub.getCall(0).args[1]), 'function');        
     }
-    function assertCalledOnceWithTwoArgs(stub, arg1, arg2){
+    function assertCalledOnceWithTwoArgs(stub, arg1, arg2) {
         Assert.equal(stub.calledOnce, true);       
         Assert.equal(stub.getCall(0).args.length, 3); 
         Assert.deepEqual(stub.getCall(0).args[0], arg1);     
         Assert.deepEqual(stub.getCall(0).args[1], arg2);           
-        Assert.equal(typeof(stub.getCall(0).args[2]), "function");        
+        Assert.equal(typeof(stub.getCall(0).args[2]), 'function');        
     }
-    function assertCalledOnceWithThreeArgs(stub, arg1, arg2, arg3){
+    function assertCalledOnceWithThreeArgs(stub, arg1, arg2, arg3) {
         Assert.equal(stub.calledOnce, true);       
         Assert.equal(stub.getCall(0).args.length, 4); 
         Assert.deepEqual(stub.getCall(0).args[0], arg1);     
         Assert.deepEqual(stub.getCall(0).args[1], arg2);           
         Assert.deepEqual(stub.getCall(0).args[2], arg3);           
-        Assert.equal(typeof(stub.getCall(0).args[3]), "function");        
+        Assert.equal(typeof(stub.getCall(0).args[3]), 'function');        
     }
-    function assertCalledOnceWithFourArgs(stub, arg1, arg2, arg3, arg4){
+    function assertCalledOnceWithFourArgs(stub, arg1, arg2, arg3, arg4) {
         Assert.equal(stub.calledOnce, true);        
         Assert.equal(stub.getCall(0).args.length, 5);
         Assert.deepEqual(stub.getCall(0).args[0], arg1);     
         Assert.deepEqual(stub.getCall(0).args[1], arg2);           
         Assert.deepEqual(stub.getCall(0).args[2], arg3);
         Assert.deepEqual(stub.getCall(0).args[3], arg4);
-        Assert.equal(typeof(stub.getCall(0).args[4]), "function");        
+        Assert.equal(typeof(stub.getCall(0).args[4]), 'function');        
     }
 
 

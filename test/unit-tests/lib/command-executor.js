@@ -1,9 +1,7 @@
 
 const Assert = require('assert');
-const Trooba = require('trooba');
 const sinon = require('sinon');
-var appRoot = require('app-root-path');
-const commandExecutor = require(appRoot +'/lib/command-executor')();
+const commandExecutor = require(`${process.cwd()}/lib/command-executor`)();
 
 describe(__filename, () => {
     it('should call pipe.throw when an error occurs', async () => {

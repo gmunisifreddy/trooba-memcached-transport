@@ -19,7 +19,6 @@ var memcachedTransport = require('trooba-memcached-transport');
 
 const client = require('trooba')
                 .use(memcachedTransport, {
-                clientId: 'dev-memcached',
                 servers: [ 
                     'memcached1.dev.myorg.com:11211',
                     'memcached2.dev.myorg.com:11211'],
@@ -42,14 +41,12 @@ console.log(retrievedValue);
     - Questions/comments can also be posted as [github issues](https://github.com/trooba/trooba-memcached-transport/issues)
 
 ## Setting up memcached client
-You can setup memcached client by configuring three properties `clientId`, `servers` and `options`. 
-* `clientid` - an unique identifier associated with memcached client.
+You can setup memcached client by configuring three properties `servers` and `options`. 
 * `servers` - location of memcached servers. Please refer to the [documentation here](https://www.npmjs.com/package/memcached#server-locations) on various ways to configure server locations.
 * `options` - various options to configure the connection. Please refere to the [documentation here](https://www.npmjs.com/package/memcached#options) for various options to configure.
 
 ```js
 const configs = {
-                clientId: '<an unique id>',
                 servers: '<location of memcached servers>',
                 options: '<options to configure the client>'               
                 };

@@ -1,13 +1,15 @@
 
+const Memcached = require('memcached');
 const client = require('./lib/client');
-const connectionPool = require('./lib/connection-pool')();
 const constants = require('./lib/constants');
 const commandExecutor = require('./lib/command-executor')();
 
 module.exports = function transportFactory() {
     function transport(pipe, config) {
         pipe.on('request', (options) => {
-            const connection = connectionPool.get(config);
+            const connection = pipe.context.$connection =
+                pipe.context.$connection || config.connection ||
+                    new Memcached(config.servers, config.options);
 
             switch (options.method) {
                 case constants.TOUCH_OP:
@@ -68,7 +70,6 @@ module.exports = function transportFactory() {
                     commandExecutor.items(pipe, connection);
                     break;
                 case constants.END_OP:
-                    connectionPool.remove(config);
                     commandExecutor.end(pipe, connection);
                     break;
                 default:

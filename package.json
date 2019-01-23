@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/trooba/trooba-memcached-transport#readme",
   "devDependencies": {
-    "app-root-path": "^2.1.0",
     "async": "^2.5.0",
     "eslint": "^5.10.0",
     "eslint-config-ebay": "^1.0.0",
